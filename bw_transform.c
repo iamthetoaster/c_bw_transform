@@ -48,6 +48,18 @@ char *bw_transform(char *s) {
     print_table(table, table_size);
     #endif
 
+    char *result = malloc(sizeof(char) * length_plus1);
+    for (int i = 0; i < length;) {
+        char *dest = result + i++;
+        *dest = table[i * length_plus1 - 2];
+    }
+    result[length] = '\0';
+    #ifdef DEBUG
+    printf("Result:\n");
+    print_table(result, length_plus1);
+    #endif
+    free(table);
+    return result;
 }
 
 char *bw_inverse(char *s) {
