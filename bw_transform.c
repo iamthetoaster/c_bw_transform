@@ -65,6 +65,9 @@ char *bw_transform(char *s) {
 char *bw_inverse(char *s) {
     // TODO: Consider wacky bitshift string rotation
 
+    char *result = malloc(sizeof(char));
+    *result = '\0';
+    return result;
 }
 
 #ifdef DEBUG
