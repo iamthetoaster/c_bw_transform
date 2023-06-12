@@ -9,6 +9,10 @@
 // TODO: Write the program
 // TODO: I don't think I need both start and end characters
 
+#ifdef DEBUG
+void print_table(char *table, int table_size);
+#endif
+
 char *bw_transform(char *s) {
     int length = strlen(s) + 2;
     // This number will be used to make sure there's extra space for the null character
@@ -33,19 +37,7 @@ char *bw_transform(char *s) {
 
     #ifdef DEBUG
     printf("Table:\n");
-    for (int i = 0; i < table_size; i++) {
-        char item = table[i];
-        if (item == '\0') {
-            printf("\\0\n");
-            continue;
-        }
-        if (item < 48) {
-            printf("x%i\t", item);
-            continue;
-        }
-        printf("%c\t", item);
-    }
-    printf("\n");
+    print_table(table, table_size);
     #endif
 
     // TODO: consider sorting pointers to strings instead of strings
@@ -53,19 +45,7 @@ char *bw_transform(char *s) {
 
     #ifdef DEBUG
     printf("Sorted Table:\n");
-    for (int i = 0; i < table_size; i++) {
-        char item = table[i];
-        if (item == '\0') {
-            printf("\\0\n");
-            continue;
-        }
-        if (item < 48) {
-            printf("x%i\t", item);
-            continue;
-        }
-        printf("%c\t", item);
-    }
-    printf("\n");
+    print_table(table, table_size);
     #endif
 
 }
@@ -74,3 +54,21 @@ char *bw_inverse(char *s) {
     // TODO: Consider wacky bitshift string rotation
 
 }
+
+#ifdef DEBUG
+void print_table(char *table, int table_size) {
+     for (int i = 0; i < table_size; i++) {
+        char item = table[i];
+        if (item == '\0') {
+            printf("\\0\n");
+            continue;
+        }
+        if (item < 48) {
+            printf("x%i\t", item);
+            continue;
+        }
+        printf("%c\t", item);
+    }
+    printf("\n");
+}
+#endif
